@@ -1,26 +1,30 @@
 <div class="row">
     <div class="col-6 offset-3">
-        <form>
-        <div class="card">
-            <div class="card-head">
-                <h1>Đăng nhập</h1>
-                <div class="card-body">
-                    <div class="form-group">
-                    <label for="">Email</label>
-                    <input type="text" class="form-control" name="email" id="email" aria-describedby="emailHid" placeholder="Email">
-                    <small id="emailHid" class="form-text text-muted">Email đã không hợp lệ hoặc bị bỏ trống</small>
+        <form id="loginForm" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <div class="card">
+                <div class="card-head">
+                    <h1>Đăng nhập</h1>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="email" class="form-control" ngModel name="email" required minlength="6" #email="ngModel"
+                                id="email" aria-describedby="emailHid" placeholder="Email">
+                            <small id="emailHid" *ngIf="!email?.valid && (email?.dirty || email?.touched)" class="form-text text-muted">Email đã không hợp lệ hoặc bị bỏ trống</small>
+                        </div>
+                        <div class="form-group">
+                                <label for="">Mật Khẩu</label>
+                                <input type="password" class="form-control" ngModel name="password" required minlength="6" maxlength="20" #password="ngModel"
+                                    id="passwordHid" aria-describedby="passwordHid" placeholder="Password">
+                                <small id="passwordHid" *ngIf="!password?.valid && (password?.dirty || password?.touched)" class="form-text text-muted">Mật khẩu đã không hợp lệ hoặc bị bỏ trống</small>
+                        </div>  
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-primary">Đăng nhập</button>
+                        <button type="reset" class="btn btn-info">Đặt Lại</button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="">Mật Khẩu</label>
-                    <input type="password" class="form-control" name="password" id="passwordHid" aria-describedby="passwordHid" placeholder="Password">
-                    <small id="passwordHid" class="form-text text-muted">Mật khẩu đã không hợp lệ hoặc bị bỏ trống</small>
-                </div>  
-            </div>
-            <div class="card-footer text-center">
-                <button class="btn btn-primary">Đăng nhập</button>
-                <button type="reset" class="btn btn-info">Đặt Lại</button>
-            </div>
         </div>
+        </form>
     </div>
     
     

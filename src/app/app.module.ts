@@ -14,10 +14,18 @@ import { HomeComponent } from './Components/home/home.component';
 import { ProductlistComponent } from './Components/productlist/productlist.component';
 import { CheckoutComponent } from './Components/checkout/checkout.component';
 import { PaymentComponent } from './Components/payment/payment.component';
-import { Router, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { NotfoundComponent } from './Components/notfound/notfound.component';
+import { ProductdetailComponent } from './Components/productdetail/productdetail.component';
 
 const routes: Routes = [
-{path : 'login', component:LoginComponent}
+  { path: 'admin', component: AdminComponent },
+  { path: 'productlist', component: ProductlistComponent },
+  { path: 'productdetail', component: ProductdetailComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: '**', component: NotfoundComponent }
 ]
 
 @NgModule({
@@ -33,11 +41,16 @@ const routes: Routes = [
     ContactComponent,
     HomeComponent,
     ProductlistComponent,
+    ProductdetailComponent,
     CheckoutComponent,
-    PaymentComponent
+    PaymentComponent,
+    NotfoundComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
